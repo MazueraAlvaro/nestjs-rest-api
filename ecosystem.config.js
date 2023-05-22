@@ -5,7 +5,7 @@ module.exports = {
             script: "npm start",
             watch: true,
             env: {
-                APP_PORT: 8080,
+                APP_PORT: 3000,
                 NODE_ENV: "production"
             }
         }
