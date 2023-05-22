@@ -4,11 +4,13 @@ import { ValidationPipe } from '@nestjs/common';
 import { CustomExceptionFilter } from './exception-filters/custom.exception-filter';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+      logger: ["debug", "verbose"],
+  });
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new CustomExceptionFilter());
   app.enableCors({
-    origin: 'http://localhost:4200',
+    origin: ['http://localhost:4200',  'http://localhost:5555'],
   });
   await app.listen( process.env.APP_PORT || 3000);
 }
