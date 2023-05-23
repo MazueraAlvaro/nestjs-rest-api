@@ -15,6 +15,5 @@ fi
 echo "Building and Deploying app"
 npm run build
 scp -Cr dist/ package.json $SSH_ALIAS:$BE_REMOTE_DIR
-ssh -t $SSH_ALIAS "which node"
-ssh $SSH_ALIAS "which node && cd $BE_REMOTE_DIR && npm i && npm run restart:pm2"
+ssh $SSH_ALIAS "cd $BE_REMOTE_DIR && npm i && npm run restart:pm2"
 echo "App built and deployed"
